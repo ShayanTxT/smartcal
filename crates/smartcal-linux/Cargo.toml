@@ -1,0 +1,18 @@
+[package]
+name = "smartcal-linux"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Linux hardware detection, evdev/udev/libinput/X11/Wayland/uinput integration for SmartCal"
+
+[dependencies]
+smartcal-core.workspace = true
+smartcal-math.workspace = true
+chrono.workspace = true
+
+[target.'cfg(target_os = "linux")'.dependencies]
+evdev.workspace = true
+x11rb.workspace = true
+wayland-client.workspace = true
+wayland-protocols.workspace = true
+libc.workspace = true

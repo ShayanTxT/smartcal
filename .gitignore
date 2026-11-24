@@ -1,0 +1,21 @@
+# Rust build outputs
+/target/
+**/*.rs.bk
+*.pdb
+
+# Packaging outputs
+/dist/
+*.deb
+*.AppImage
+*.tar.gz
+
+# Logs & runtime diagnostics exports
+*.log
+/logs/
+calibration-diagnostics.txt
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

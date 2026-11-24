@@ -1,0 +1,16 @@
+[package]
+name = "smartcal-gui"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Professional classroom GUI, calibration wizard, fullscreen canvas, and test mode for SmartCal"
+
+[dependencies]
+smartcal-core.workspace = true
+smartcal-math.workspace = true
+smartcal-linux.workspace = true
+smartcal-i18n.workspace = true
+eframe.workspace = true
+fontdb.workspace = true
+rfd.workspace = true
+chrono.workspace = true

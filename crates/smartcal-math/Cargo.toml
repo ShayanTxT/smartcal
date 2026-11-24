@@ -1,0 +1,10 @@
+[package]
+name = "smartcal-math"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Projective homography, RANSAC, polynomial, TPS, and touch noise filtering for SmartCal"
+
+[dependencies]
+smartcal-core.workspace = true
+nalgebra.workspace = true

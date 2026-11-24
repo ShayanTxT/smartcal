@@ -1,0 +1,53 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/smartcal-core",
+    "crates/smartcal-math",
+    "crates/smartcal-linux",
+    "crates/smartcal-i18n",
+    "crates/smartcal-gui",
+    "crates/smartcal-cli",
+]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2024"
+authors = ["SmartCal Maintainers"]
+license = "MIT OR Apache-2.0"
+description = "Professional Linux Smart Board & Interactive Projector Calibration Suite"
+repository = "https://github.com/ShayanTxT/smartcal"
+
+[workspace.dependencies]
+smartcal-core = { path = "crates/smartcal-core" }
+smartcal-math = { path = "crates/smartcal-math" }
+smartcal-linux = { path = "crates/smartcal-linux" }
+smartcal-i18n = { path = "crates/smartcal-i18n" }
+smartcal-gui = { path = "crates/smartcal-gui" }
+
+eframe = { version = "0.37.0", default-features = false, features = ["accesskit", "clipboard", "default_fonts", "glow", "system_fonts", "wayland", "x11"] }
+nalgebra = "0.35.0"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+thiserror = "2.0.21"
+chrono = { version = "0.4.45", features = ["serde"] }
+clap = { version = "4.6.9", features = ["derive"] }
+directories = "6.0.0"
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter", "fmt", "chrono"] }
+tracing-appender = "0.2.5"
+unicode-bidi = "0.3.18"
+fontdb = "0.24.0"
+rfd = "0.18.0"
+
+# Linux-specific system APIs
+evdev = "0.13.2"
+x11rb = { version = "0.14.0", features = ["randr", "xinput", "dpms", "screensaver"] }
+wayland-client = { version = "0.31.15", features = ["dlopen"] }
+wayland-protocols = { version = "0.32.13", features = ["client", "unstable"] }
+libc = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+strip = "symbols"
+codegen-units = 1

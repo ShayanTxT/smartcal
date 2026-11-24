@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Smart Board Calibration (SmartCal)
+Name[fa]=کالیبراسیون تخته هوشمند
+GenericName=Touch & Projector Calibration
+Comment=Calibrate interactive whiteboards and projectors on X11 and Wayland
+Exec=smartcal
+Icon=smartcal
+Terminal=false
+Categories=System;Settings;HardwareSettings;Education;
+Keywords=smartboard;touchscreen;projector;calibration;evdev;libinput;
+StartupNotify=true

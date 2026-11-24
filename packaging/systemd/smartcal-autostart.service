@@ -1,0 +1,10 @@
+[Unit]
+Description=SmartCal Classroom Smart Board Auto-Calibration Applier
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/smartcal --apply-startup
+
+[Install]
+WantedBy=default.target

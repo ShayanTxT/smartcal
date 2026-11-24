@@ -1,0 +1,16 @@
+[package]
+name = "smartcal-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Core domain models, configuration, profile management, and logging for SmartCal"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+chrono.workspace = true
+directories.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-appender.workspace = true

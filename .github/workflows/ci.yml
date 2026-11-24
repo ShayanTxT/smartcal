@@ -1,0 +1,59 @@
+name: SmartCal Linux CI & Packaging
+
+on:
+  push:
+    branches: [main, master]
+    tags: ["v*"]
+  pull_request:
+    branches: [main, master]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  linux-build-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux desktop & input dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential pkg-config \
+            xinput x11-xserver-utils libinput-tools udev \
+            libgl1-mesa-dev libegl1-mesa-dev libxkbcommon-dev \
+            fonts-dejavu-core
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Run workspace unit & integration tests
+        run: cargo test --workspace --locked || cargo test --workspace
+
+      - name: Build release binary
+        run: cargo build --release --bin smartcal
+
+      - name: Smoke-test CLI flags
+        run: |
+          ./target/release/smartcal --help
+          ./target/release/smartcal --list-displays
+          ./target/release/smartcal --list-devices
+          ./target/release/smartcal --diagnostics --export calibration-diagnostics.txt
+
+      - name: Build Debian (.deb) package
+        run: |
+          chmod +x packaging/build-deb.sh packaging/build-appimage.sh install.sh uninstall.sh
+          ./packaging/build-deb.sh
+          dpkg-deb --info dist/smartcal_*_amd64.deb
+
+      - name: Stage AppDir for AppImage
+        run: ./packaging/build-appimage.sh
+
+      - name: Upload .deb package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: smartcal-linux-deb
+          path: dist/*.deb

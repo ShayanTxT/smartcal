@@ -1,0 +1,10 @@
+[package]
+name = "smartcal-i18n"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "English and Persian localization plus Arabic/Persian contextual glyph shaping and BiDi reordering"
+
+[dependencies]
+smartcal-core.workspace = true
+unicode-bidi.workspace = true

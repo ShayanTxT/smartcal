@@ -1,0 +1,6 @@
+# SmartCal Classroom Smart Board & Interactive Projector Permissions
+# Allows users in the 'input' group to read touchscreens and emit calibrated events via /dev/uinput
+# without running the desktop GUI as root.
+SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_TOUCHSCREEN}=="1", MODE="0660", GROUP="input"
+SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_TABLET}=="1", MODE="0660", GROUP="input"
+KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"

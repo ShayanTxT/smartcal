@@ -1,0 +1,19 @@
+[package]
+name = "smartcal-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "SmartCal CLI and Desktop Launcher for Smart Board & Interactive Projector Calibration"
+
+[[bin]]
+name = "smartcal"
+path = "src/main.rs"
+
+[dependencies]
+smartcal-core.workspace = true
+smartcal-math.workspace = true
+smartcal-linux.workspace = true
+smartcal-gui.workspace = true
+clap.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
