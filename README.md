@@ -65,21 +65,37 @@
 
 ## Installation on Linux
 
+### Quick Install — Pre-built Releases (No Compilation Needed)
+
+Download ready-to-run Linux binaries from [**GitHub Releases**](https://github.com/ShayanTxT/smartcal/releases/latest):
+
+- **Ubuntu / Debian / Linux Mint (`.deb`)**:
+  ```bash
+  sudo apt install ./smartcal_*_amd64.deb
+  ```
+- **Universal Portable (`AppImage`)**:
+  ```bash
+  chmod +x SmartCal-*-x86_64.AppImage
+  ./SmartCal-*-x86_64.AppImage
+  ```
+- **Portable Tarball (`.tar.gz`, any distro)**:
+  ```bash
+  tar -xzf smartcal-*-linux-x86_64.tar.gz
+  cd smartcal-*-linux-x86_64
+  ./install-release.sh   # Or run directly: ./smartcal
+  ```
+
+### Build from Source
+
 ```bash
 chmod +x install.sh uninstall.sh packaging/*.sh
 ./install.sh
 ```
 
-Or build a `.deb` package (Debian / Ubuntu / Linux Mint):
+Or build `.deb` / `AppImage` locally:
 
 ```bash
 ./packaging/build-deb.sh
-sudo dpkg -i dist/smartcal_1.0.0_amd64.deb
-```
-
-Or stage/build an `AppImage`:
-
-```bash
 ./packaging/build-appimage.sh
 ```
 

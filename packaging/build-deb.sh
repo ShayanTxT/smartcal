@@ -32,7 +32,7 @@ Section: utils
 Priority: optional
 Architecture: ${ARCH}
 Maintainer: SmartCal Maintainers <maintainers@smartcal.local>
-Depends: libc6, libgl1 | libgl1-mesa-glx, libxkbcommon0, udev
+Depends: libc6, libgl1 | libgl1-mesa-glx, libegl1, libx11-6, libxkbcommon0, libxkbcommon-x11-0, udev
 Recommends: xinput, x11-xserver-utils, libinput-tools, fonts-dejavu-core, fonts-vazirmatn
 Description: Smart Board & Interactive Projector Calibration Suite
  Professional Linux desktop utility for calibrating touchscreens, interactive

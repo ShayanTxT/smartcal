@@ -73,7 +73,29 @@
 
 ## نصب در لینوکس
 
-### روش ۱: نصب مستقیم با اسکریپت `install.sh` (پیشنهادی)
+### روش ۰ (سریع‌ترین): دانلود نسخه آماده بدون نیاز به کامپایل از Releases
+
+برای تست فوری بدون نصب Rust و بدون کامپایل سورس، از بخش [**GitHub Releases**](https://github.com/ShayanTxT/smartcal/releases/latest) فایل متناسب با توزیع خود را دانلود کنید:
+
+- **بسته آماده Ubuntu / Debian / Linux Mint (`.deb`)**:
+  ```bash
+  sudo apt install ./smartcal_*_amd64.deb
+  ```
+- **فایل اجرای مستقیم روی همه توزیع‌ها (`AppImage`)**:
+  ```bash
+  chmod +x SmartCal-*-x86_64.AppImage
+  ./SmartCal-*-x86_64.AppImage
+  ```
+- **بسته فشرده پرتابل (`.tar.gz`)**:
+  ```bash
+  tar -xzf smartcal-*-linux-x86_64.tar.gz
+  cd smartcal-*-linux-x86_64
+  ./install-release.sh   # یا اجرای مستقیم: ./smartcal
+  ```
+
+---
+
+### روش ۱: کامپایل و نصب خودکار از سورس (`install.sh`)
 اسکریپت زیر به‌صورت خودکار وابستگی‌ها را روی اوبونتو/دبیان/مینت، فدورا، آرچ یا اوپن‌سوزه نصب کرده، نسخه Release را می‌سازد و قانون دسترسی `udev` و آیکون دسکتاپ را نصب می‌کند:
 
 ```bash

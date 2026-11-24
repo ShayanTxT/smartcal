@@ -28,10 +28,13 @@ EOF
 chmod +x "${APPDIR}/AppRun"
 
 mkdir -p "${ROOT_DIR}/dist"
-if command -v appimagetool >/dev/null 2>&1; then
-  ARCH=x86_64 appimagetool "${APPDIR}" "${ROOT_DIR}/dist/SmartCal-${VERSION}-x86_64.AppImage"
-  echo "==> Built AppImage: ${ROOT_DIR}/dist/SmartCal-${VERSION}-x86_64.AppImage"
+OUT_APPIMAGE="${ROOT_DIR}/dist/SmartCal-${VERSION}-x86_64.AppImage"
+if [[ -n "${APPIMAGETOOL_BIN:-}" && -x "${APPIMAGETOOL_BIN}" ]]; then
+  ARCH=x86_64 "${APPIMAGETOOL_BIN}" "${APPDIR}" "${OUT_APPIMAGE}"
+  echo "==> Built AppImage: ${OUT_APPIMAGE}"
+elif command -v appimagetool >/dev/null 2>&1; then
+  ARCH=x86_64 APPIMAGE_EXTRACT_AND_RUN=1 appimagetool "${APPDIR}" "${OUT_APPIMAGE}"
+  echo "==> Built AppImage: ${OUT_APPIMAGE}"
 else
   echo "appimagetool not found in PATH; AppDir staged cleanly at ${APPDIR}."
-  echo "Install appimagetool and run: ARCH=x86_64 appimagetool ${APPDIR} ${ROOT_DIR}/dist/SmartCal-${VERSION}-x86_64.AppImage"
 fi
